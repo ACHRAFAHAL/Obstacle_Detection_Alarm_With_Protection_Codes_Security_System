@@ -1,0 +1,5 @@
+../Core/Src/ssd1315_physical_layer_i2c.c:21:6:LCD_IO_Init	3
+../Core/Src/ssd1315_physical_layer_i2c.c:34:6:LCD_IO_WriteCommand	1
+../Core/Src/ssd1315_physical_layer_i2c.c:40:9:LCD_IO_WriteData	1
+../Core/Src/ssd1315_physical_layer_i2c.c:45:9:LCD_IO_WriteMultipleData	1
+../Core/Src/ssd1315_physical_layer_i2c.c:52:9:LCD_Delay	1

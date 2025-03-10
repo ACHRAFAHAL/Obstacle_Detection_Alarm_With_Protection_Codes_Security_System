@@ -1,0 +1,9 @@
+../Core/Src/utils.c:19:5:is_equal	4
+../Core/Src/utils.c:23:6:HAL_GPIO_EXTI_Callback	2
+../Core/Src/utils.c:34:6:etape1	2
+../Core/Src/utils.c:62:6:etape2	2
+../Core/Src/utils.c:90:6:etape3	2
+../Core/Src/utils.c:118:6:etapeD	2
+../Core/Src/utils.c:146:6:etapeE	2
+../Core/Src/utils.c:174:6:setup	1
+../Core/Src/utils.c:179:6:loop	7
