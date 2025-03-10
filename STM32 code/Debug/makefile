@@ -60,8 +60,8 @@ all: main-build
 main-build: TP4.elf secondary-outputs
 
 # Tool invocations
-TP4.elf TP4.map: $(OBJS) $(USER_OBJS) C:\STM32Cube\Micro_C\ 1A\TP4\STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TP4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\STM32Cube\Micro_C 1A\TP4\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+TP4.elf TP4.map: $(OBJS) $(USER_OBJS) C:\Users\fifam\OneDrive\Documents\GitHub\Obstacle_Detection_Alarm_With_Protection_Codes_Security_System\STM32\ code\STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "TP4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\fifam\OneDrive\Documents\GitHub\Obstacle_Detection_Alarm_With_Protection_Codes_Security_System\STM32 code\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

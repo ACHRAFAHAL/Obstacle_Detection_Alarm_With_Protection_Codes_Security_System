@@ -1,4 +1,5 @@
 "./Core/Src/adc.o"
+"./Core/Src/alarm.o"
 "./Core/Src/code.o"
 "./Core/Src/encoder.o"
 "./Core/Src/fonts.o"

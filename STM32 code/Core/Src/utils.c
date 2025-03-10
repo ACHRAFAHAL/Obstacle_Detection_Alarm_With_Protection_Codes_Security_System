@@ -13,6 +13,7 @@
 #include "code.h"
 
 static int i = 0;
+static int x = 0;
 
 static char* caracteres[CHARACTER_LIST_LENGTH] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
 
@@ -25,10 +26,20 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 		printf("\r\nButton pressed !\r\n");
 		enteredCode[i] = caracteres[encoder_read()];
 		i++;
-		printf(enteredCode[0]);
-		printf(enteredCode[1]);
-		printf(enteredCode[2]);
 	}
+}
+
+
+void etape0(void){
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 0);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
+	ssd1315_Clear(SSD1315_COLOR_BLACK);
+
+	char buffer[16] = {0};
+	snprintf(buffer, 16, "ALARM OFF");
+	ssd1315_Draw_String(0, 0, buffer, &Font_11x18); //Tailles disponibles : 7x10; 11x18; 16x26
+	ssd1315_Refresh();
 }
 
 void etape1(void){
@@ -177,36 +188,43 @@ void setup(){
 }
 
 void loop(){
-	printf("encoder_read() = %s\r\n", caracteres[encoder_read()]);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 0);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
-	etape1();
-	while((i==3)){
-		if(is_equal(code1, enteredCode)){
-			etape2();
-			if(is_equal(code2, enteredCode)){
-				etape3();
-				if(is_equal(code3, enteredCode)){
-					printf("\r\nAlarme désactivée.\r\n");
+	if (x!=1){
+	etape0();
+	}
+	if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_5)==0 || x==1){
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 0);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+		etape1();
+		while((i==3)){
+			if(is_equal(code1, enteredCode)){
+				etape2();
+				if(is_equal(code2, enteredCode)){
+					etape3();
+					if(is_equal(code3, enteredCode)){
+						x=0;
+						break;
+					}
 				}
 			}
-		}
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 1);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
-		etapeD();
-		if(is_equal(codeD, enteredCode)){
-			i = 0;
-		}else{
-			while(1){
-				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 0);
-				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 1);
-				etapeE();
-				if(is_equal(codeE, enteredCode)){
-					printf("\r\nAlarme desactivee.\r\n");
-					break;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
+			etapeD();
+			if(is_equal(codeD, enteredCode)){
+				x = 1;
+				break;
+			}else{
+				while(1){
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 1);
+					etapeE();
+					if(is_equal(codeE, enteredCode)){
+						x=0;
+						break;
+					}
 				}
+				i=0;
 			}
-			i=0;
 		}
 	}
 }

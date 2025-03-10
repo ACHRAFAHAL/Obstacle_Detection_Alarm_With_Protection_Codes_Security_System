@@ -121,7 +121,7 @@ int main(void)
   ssd1315_Clear(SSD1315_COLOR_BLACK);
 
   char buffer[16] = {0};
-  snprintf(buffer, 16, "ENSEA");
+  snprintf(buffer, 16, "ALARM OFF");
   ssd1315_Draw_String(0, 0, buffer, &Font_11x18); //Tailles disponibles : 7x10; 11x18; 16x26
   ssd1315_Refresh();
   /* USER CODE END 2 */

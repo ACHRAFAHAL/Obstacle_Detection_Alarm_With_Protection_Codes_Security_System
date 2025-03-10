@@ -1,0 +1,2 @@
+../Core/Src/alarm.c:14:6:Alarm_Init	40	static
+../Core/Src/alarm.c:35:6:Alarm_UpdateFrequency	24	static
