@@ -189,6 +189,9 @@ void setup(){
 
 void loop(){
 	if (x!=1){
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 0);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 	etape0();
 	}
 	if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_5)==0 || x==1){
