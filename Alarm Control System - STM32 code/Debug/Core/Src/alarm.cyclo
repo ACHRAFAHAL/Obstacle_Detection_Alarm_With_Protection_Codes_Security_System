@@ -1,2 +1,3 @@
 ../Core/Src/alarm.c:14:6:Alarm_Init	1
 ../Core/Src/alarm.c:35:6:Alarm_UpdateFrequency	1
+../Core/Src/alarm.c:47:6:Alarm_start	1

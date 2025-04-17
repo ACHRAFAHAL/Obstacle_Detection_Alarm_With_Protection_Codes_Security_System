@@ -67,6 +67,7 @@ void etape1(void){
 		ssd1315_Draw_String(10, 20, buffer_caractere2_c1, &Font_11x18);
 		ssd1315_Draw_String(20, 20, buffer_caractere3_c1, &Font_11x18);
 		ssd1315_Refresh();
+		HAL_Delay(1000);
 	}
 }
 

@@ -43,3 +43,13 @@ void Alarm_UpdateFrequency(uint32_t frequency) {
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, new_arr / 2);
 
 }
+
+void Alarm_start(void){
+	    // Set tone to 1 kHz
+	    Alarm_UpdateFrequency(1000);
+	    HAL_Delay(500);  // Tone duration 500 ms
+
+	    // Set tone to 2 kHz
+	    Alarm_UpdateFrequency(2000);
+	    HAL_Delay(500);  // Tone duration 500 ms
+}
