@@ -128,11 +128,6 @@ Multiple Errors (ERREUR State): In cases of multiple incorrect entries or an inc
 
 ## contributing
 
-<div align="center">
-  <h3>Project Team</h3>
-  <p>Supervised by M. Christian JOSSE</p>
-</div>
-
 <br>
 
 <table align="center">
