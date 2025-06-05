@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "WE-TVS_SC70-5L_82402374")(type "KiCad")(uri "${KICAD_CUSTOM_LIBRARY}/WE-TVS_SC70-5L_82402374.kicad_sym")(options "")(descr ""))
+)
